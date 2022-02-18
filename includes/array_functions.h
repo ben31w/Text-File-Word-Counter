@@ -62,5 +62,7 @@ namespace KP{
 	 * See the course lectures and demo projects for how to sort a vector of structs
 	 */
 	void sort(std::vector<constants::entry>  &entries, constants::sortOrder so);
+
+
 }
 #endif /* ARRAY_FUNCTIONS_H_ */
