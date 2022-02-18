@@ -25,7 +25,7 @@ namespace KP {
 	//get word at location i iff i<size(see above function), otherwise return the last word
 	//(this is lazy, should throw an exception instead)
 	std::string getWordAt(std::vector<constants::entry>  &entries, int i) {
-		if (i < entries.size()) {
+		if (i >= entries.size()) {
 			return entries[entries.size()-1].word;
 		}
 		return entries[i].word;
@@ -34,7 +34,7 @@ namespace KP {
 	//get number_occurences at location i iff i<size(see above function), otherwise return the last number_occurences
 	//(this is lazy, should throw an exception instead)
 	int getNumbOccurAt(std::vector<constants::entry>  &entries,int i) {
-		if (i < entries.size()) {
+		if (i >= entries.size()) {
 			return entries[entries.size()-1].number_occurences;
 		}
 		return entries[i].number_occurences;
@@ -75,15 +75,15 @@ namespace KP {
 	 * if so increment entry.number_occurences, otherwise create a new entry struct for the token,
 	 * set entry.number_occurences=1 and add it to the entries vector*/
 	void processToken(std::vector<constants::entry>  &entries, std::string &token) {
-		// Strip unwanted characters from the token first. If the toekn is empty, then return.
+		// Strip unwanted characters from the token, and if the result is empty, exit this method.
 		if (!strip_unwanted_chars(token)) {
 			return;
 		}
+
 		// Loop through the entries. If we find an entry that matches the token,
 		// then increment the number of occurrences for that entry.
+
 		for (constants::entry e : entries) {
-			toUpper(e.word);
-			toUpper(token);
 			if (e.word == token) {
 				e.number_occurences++;
 				return;
