@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstring>
 #include <vector>
 #include "../includes/array_functions.h"
@@ -18,9 +19,9 @@ int getSize(std::vector<constants::entry>  &entries) {
 //(this is lazy, should throw an exception instead)
 std::string getWordAt(std::vector<constants::entry>  &entries, int i) {
 	if (i < entries.size()) {
-		return entries[entries.size()-1];
+		return entries[entries.size()-1].word;
 	}
-	return entries[i];
+	return entries[i].word;
 }
 
 //get number_occurences at location i iff i<size(see above function), otherwise return the last number_occurences
@@ -44,7 +45,7 @@ bool processFile(std::vector<constants::entry>  &entries,std::fstream &myfstream
 	std::string line;
 	while ( !myfstream.eof() ) {
 		getline(myfstream, line);
-		//processLine(entries, line);
+		KP::processLine(entries, line);
 	}
 	return true;
 }
@@ -55,7 +56,7 @@ void processLine(std::vector<constants::entry>  &entries, std::string &myLine) {
 	std::stringstream ss(myLine);
 	std::string token;
 	while(getline(ss, token, ' ')) {
-		//processToken(entries, token);
+		KP::processToken(entries, token);
 	}
 }
 
@@ -84,7 +85,8 @@ void processToken(std::vector<constants::entry>  &entries,std::string &token) {
 	// We're not converting the word field to lowercase but we'lll ignore that for now.
 	constants::entry newEntry;
 	newEntry.word = token;
-	newEntry.word_uppercase = toUpper(token);
+	toUpper(token);
+	newEntry.word_uppercase = token;
 	newEntry.number_occurences = 1;
 	entries.push_back(newEntry);
 }
@@ -100,11 +102,15 @@ void sort(std::vector<constants::entry>  &entries, constants::sortOrder so) {
 	case constants::NONE:
 		break;
 	case constants::ASCENDING:
-		//std::sort( entries.begin(), entries.end() );
+		//TODO change sort
+		std::sort( entries.begin(), entries.end() );
+		break;
 	case constants::DESCENDING:
-		//std::sort( entries.begin(), entries.end() );
+		std::sort( entries.begin(), entries.end() );
+		break;
 	case constants::NUMBER_OCCURRENCES:
-		//std::sort( entries.begin(), entries.end() );
+		std::sort( entries.begin(), entries.end() );
+		break;
 	}
 }
 

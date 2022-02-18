@@ -6,7 +6,7 @@
 /* returns True - file opened successfully
           False - file not opened*/
 bool openFile(std::fstream& myfile, const std::string& myFileName,
-		std::ios_base::openmode mode = std::ios_base::in) {
+		std::ios_base::openmode mode) {
 
 	myfile.open(myFileName);
 	if (myfile.is_open()) {
