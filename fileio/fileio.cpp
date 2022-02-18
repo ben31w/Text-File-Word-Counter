@@ -10,7 +10,6 @@ bool openFile(std::fstream& myfile, const std::string& myFileName,
 
 	myfile.open(myFileName);
 	if (myfile.is_open()) {
-		myfile.close();
 		return true;
 	}
 	return false;
