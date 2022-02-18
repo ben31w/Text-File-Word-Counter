@@ -82,10 +82,10 @@ namespace KP {
 
 		// Loop through the entries. If we find an entry that matches the token,
 		// then increment the number of occurrences for that entry.
-
-		for (constants::entry e : entries) {
-			if (e.word == token) {
-				e.number_occurences++;
+		std::vector<constants::entry>::iterator itr;
+		for (itr = entries.begin(); itr != entries.end(); ++itr) {
+			if ((*itr).word == token) {
+				++(*itr).number_occurences;
 				return;
 			}
 		}
