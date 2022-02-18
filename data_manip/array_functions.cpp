@@ -132,7 +132,7 @@ namespace KP {
 	}
 
 	bool compareOccurences(const constants::entry &one, constants::entry &two) {
-		return one.number_occurences < two.number_occurences;
+		return one.number_occurences > two.number_occurences;
 	}
 
 }
