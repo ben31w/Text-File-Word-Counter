@@ -80,6 +80,9 @@ namespace KP {
 			return;
 		}
 
+		// convert token to lowercase
+		std::transform(token.begin(), token.end(), token.begin(), ::tolower);
+
 		// Loop through the entries. If we find an entry that matches the token,
 		// then increment the number of occurrences for that entry.
 		std::vector<constants::entry>::iterator itr;
@@ -91,9 +94,10 @@ namespace KP {
 		}
 
 		// If we make it through the loop without finding a matching entry, create
-		// a new entry.
-		// We're not converting the word field to lowercase but we'lll ignore that for now.
+		// a new entry. First convert token to lowercase, the uppercase, then increment
+		// number of occurrences.
 		constants::entry newEntry;
+		std::transform(token.begin(), token.end(), token.begin(), ::tolower);
 		newEntry.word = token;
 		toUpper(token);
 		newEntry.word_uppercase = token;
