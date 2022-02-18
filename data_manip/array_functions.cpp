@@ -75,7 +75,10 @@ namespace KP {
 	 * if so increment entry.number_occurences, otherwise create a new entry struct for the token,
 	 * set entry.number_occurences=1 and add it to the entries vector*/
 	void processToken(std::vector<constants::entry>  &entries, std::string &token) {
-		strip_unwanted_chars(token);
+		// Strip unwanted characters from the token first. If the toekn is empty, then return.
+		if (!strip_unwanted_chars(token)) {
+			return;
+		}
 		// Loop through the entries. If we find an entry that matches the token,
 		// then increment the number of occurrences for that entry.
 		for (constants::entry e : entries) {
