@@ -5,9 +5,9 @@ There's no user interface (yet) but it contains methods that:
 1.  Open an input file for reading.
 
 2.  Read all the words from the file, count the number of times each
-    word occurs and records this data to a vector.
+    word occurs, and record this data to a vector.
 
-3.  Sort the vector
+3.  Sort the vector.
 
 4.  Write the sorted vector to an output file.
 
