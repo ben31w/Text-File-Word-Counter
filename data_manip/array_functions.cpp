@@ -123,11 +123,11 @@ namespace KP {
 	}
 
 	bool compareWordAscending(const constants::entry &one, constants::entry &two) {
-		return one.word < two.word;
+		return one.word_uppercase < two.word_uppercase;
 	}
 
 	bool compareWordDescending(const constants::entry &one, constants::entry &two) {
-		return one.word > two.word;
+		return one.word_uppercase > two.word_uppercase;
 	}
 
 	bool compareOccurences(const constants::entry &one, constants::entry &two) {
